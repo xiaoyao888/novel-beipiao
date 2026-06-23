@@ -107,8 +107,7 @@ onMounted(() => {
         <span class="dark-mode-label">{{ darkMode ? '暗夜模式' : '日间模式' }}</span>
         <ElSwitch 
           v-model="darkMode" 
-          :active-icon="Moon" 
-          :inactive-icon="Sun"
+          :active-icon="Moon"
           active-color="#667eea"
           inactive-color="#ddd"
         />
@@ -142,18 +141,12 @@ onMounted(() => {
     </el-container>
     
     <el-drawer
-      :visible="drawerVisible"
-      :direction="'ltr'"
-      :size="'80%'"
+      v-model="drawerVisible"
+      direction="ltr"
+      size="80%"
       class="mobile-drawer"
       @close="closeDrawer"
     >
-      <div class="drawer-header">
-        <span class="drawer-title">北漂十七年</span>
-        <button class="close-btn" @click="closeDrawer">
-          ×
-        </button>
-      </div>
       <SidebarMenu
         :menu-items="menuItems"
         :current-index="currentIndex"
