@@ -9,6 +9,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.1.0"
+    "@astrojs/vue": "^5.1.4",
+    "@element-plus/icons-vue": "^2.3.2",
+    "astro": "^5.1.0",
+    "element-plus": "^2.14.2"
   }
 }
