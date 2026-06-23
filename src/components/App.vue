@@ -44,7 +44,9 @@ const loadChapterTitles = async () => {
       const text = await response.text()
       const extractedTitle = extractTitleFromMarkdown(text)
       if (extractedTitle && extractedTitle !== '') {
-        chapterTitles.value[i] = chapters[i].title.replace(/第\d+章\s*/, '') + extractedTitle
+        if (chapters[i].title.match(/^第\d+章$/)) {
+          chapterTitles.value[i] = chapters[i].title + ' ' + extractedTitle
+        }
       }
     } catch (error) {
       console.log(`Failed to load title for chapter ${i}`)
