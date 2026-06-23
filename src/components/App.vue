@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { ElContainer, ElAside, ElMain, ElMenu, ElMenuItem, ElSubMenu, ElCard, ElButton, ElBacktop, ElMessage } from 'element-plus'
 import { Reading, ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
-import { chapters } from '../data/chapters';
+import { chapters } from '../data/chapters'
 
 const currentIndex = ref(0)
 const currentChapter = computed(() => chapters[currentIndex.value])
@@ -15,7 +15,7 @@ const menuItems = computed(() => {
     { id: 'volume1', name: '第一卷：离乡', chapters: chapters.filter(c => c.volume === '第一卷：离乡') },
     { id: 'volume2', name: '第二卷', chapters: chapters.filter(c => c.volume === '第二卷') },
     { id: 'volume3', name: '第三部：而立之年', chapters: chapters.filter(c => c.volume === '第三部：而立之年') }
-  ];
+  ]
   
   return volumes.map(volume => ({
     title: volume.name,
@@ -118,7 +118,7 @@ onMounted(() => {
   <el-container class="app-container">
     <el-aside width="300px" class="sidebar">
       <div class="logo">
-        <el-icon :size="24"><Reading /></el-icon>
+        <component :is="Reading" :size="24" />
         <span>北漂</span>
       </div>
       
@@ -184,7 +184,19 @@ onMounted(() => {
   </el-container>
 </template>
 
-<style scoped>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
 .app-container {
   min-height: 100vh;
 }
