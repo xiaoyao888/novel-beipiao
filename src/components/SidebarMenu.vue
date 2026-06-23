@@ -71,9 +71,37 @@ const handleMenuSelect = (index) => {
   color: #333;
   border-bottom: 1px solid #eee;
   justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.dark .logo {
+  color: #fff;
+  border-bottom-color: #333;
 }
 
 .chapter-menu {
   border-right: none;
+}
+
+.dark .chapter-menu {
+  color: #a0aec0;
+}
+
+.dark .el-menu-item {
+  color: #a0aec0;
+}
+
+.dark .el-menu-item:hover,
+.dark .el-menu-item.is-active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.dark .el-submenu__title {
+  color: #a0aec0;
+}
+
+.dark .el-submenu__title:hover {
+  color: #fff;
 }
 </style>

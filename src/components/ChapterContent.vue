@@ -27,7 +27,12 @@ const props = defineProps({
   totalChapters: {
     type: Number,
     default: 0
-  }
+  },
+  darkMode: {
+    type: Boolean,
+    default: false
+  },
+
 })
 
 const emit = defineEmits(['prev', 'next'])
@@ -57,7 +62,7 @@ const copyContent = async () => {
 </script>
 
 <template>
-  <el-card class="chapter-card" v-loading="loading">
+  <el-card :class="['chapter-card', { 'dark': darkMode }]" v-loading="loading">
     <template #header>
       <div class="card-header">
         <div class="header-left">
@@ -75,7 +80,7 @@ const copyContent = async () => {
       </div>
     </template>
     
-    <div class="chapter-content" v-html="chapterContent"></div>
+    <div class="chapter-content" :class="{'dark': darkMode}"  v-html="chapterContent"></div>
     
     <div class="nav-buttons">
       <el-button 
@@ -106,7 +111,14 @@ const copyContent = async () => {
 .chapter-card {
   min-height: 600px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: transparent;
+
 }
+.chapter-card.dark {
+  background: #1e1e32f2;
+}
+
+
 
 .card-header {
   display: flex;
@@ -122,7 +134,6 @@ const copyContent = async () => {
 .volume-tag {
   display: inline-block;
   padding: 4px 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border-radius: 20px;
   font-size: 14px;
@@ -141,7 +152,9 @@ const copyContent = async () => {
   font-size: 16px;
   padding: 20px 0;
 }
-
+.chapter-content.dark{
+  color:#adabab;
+}
 .chapter-content p {
   margin-bottom: 20px;
   text-indent: 2em;
