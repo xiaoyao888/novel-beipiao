@@ -46,6 +46,8 @@ const loadChapterTitles = async () => {
       if (extractedTitle && extractedTitle !== '') {
         if (chapters[i].title.match(/^第\d+章$/)) {
           chapterTitles.value[i] = chapters[i].title + ' ' + extractedTitle
+        } else {
+          chapterTitles.value[i] = chapters[i].title.replace(/第\d+章\s*/, '') + extractedTitle
         }
       }
     } catch (error) {
